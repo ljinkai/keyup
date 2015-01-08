@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/
+DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,&nbsp;maximum-scale=2.0"/>
+    <meta name="MobileOptimized" content="240"/>
+    <title>摇一摇，财多多</title>
+<style type="text/css">
+    body {padding: 0px;margin: 0px;}
+    .back {display:none;width:320px;margin:0px auto;height:360px;background: url("shake.jpeg") no-repeat left top;background-size: 100% 100%;}
+    .skake_person {background: url("guan.jpg") no-repeat center;width: 300px;height: 197px;margin: 0px auto;}
+    .result {display: none;}
+    .gold {width: 290px;height: 290px;margin: 0px auto;background: url("gold.gif") no-repeat left top;}
+</style>
+<script type="text/javascript">
+    var SHAKE_THRESHOLD = 3000;
+    var last_update = 0;
+    var x=y=z=last_x=last_y=last_z=0;
+    var  media;
+
+    function init(){
+        last_update=new Date().getTime();
+        media= document.getElementById("musicBox");
+//            deviceMotionHandler();
+        lazy();
+        if (window.DeviceMotionEvent) {
+            window.addEventListener('devicemotion',shake, false);
+//                media.play();
+        } else{
+            alert('not support mobile event');
+        }
+        media.addEventListener("canplaythrough", function () {
+//                alert('The file is loaded and ready to play!');
+
+        }, false);
+    }
+    function lazy() {
+        setTimeout(function() {
+            document.getElementById("shake_person").style.display = "none";
+            document.getElementById("back").style.display = "block";
+        },2000);
+    }
+    function gold(num) {
+        document.getElementById("back").style.display = "none";
+        document.getElementById("gold_num").innerHTML = num;
+        document.getElementById("result").style.display = "block";
+    }
+    function shake(eventData) {
+        var acceleration =eventData.accelerationIncludingGravity;
+        var curTime = new Date().getTime();
+        if ((curTime - last_update)> 100) {
+            var diffTime = curTime -last_update;
+            last_update = curTime;
+            x = acceleration.x;
+            y = acceleration.y;
+            z = acceleration.z;
+            var speed = Math.abs(x +y + z - last_x - last_y - last_z) /
+                    diffTime * 10000;
+
+            if (speed > SHAKE_THRESHOLD) {
+                // alert("shaked");
+                var num = random();
+                if(!media.src){
+                    media.src= "1" + num + ".mp3" ;
+                }
+                media.play();
+                gold(num);
+            }
+            last_x = x;
+            last_y = y;
+            last_z = z;
+        }
+    }
+    function deviceMotionHandler(eventData) {
+//            if(!media.src){
+//                media.src="deng.mp3"
+//            }
+    }
+    function random() {
+        var ran = Math.ceil(Math.random()*(3-0)+0);
+        return ran;
+    }
+</script>
+
+
+</head>
+
+<body onload="init()">
+<img src="shake.jpeg" style="width: 0px;height: 0px;">
+<div id="shake_person" class="skake_person">
+
+</div>
+<div id="result" class="result">
+    <div id="gold" class="gold">
+    </div>
+    <div style="color: green;font-size: 18px;text-align: center;width: 100%;">你今年能赚<span id="gold_num"></span>000万！！</div>
+</div>
+<div id="back" class="back">
+    <div style="display: none;">
+        <audio id="musicBox" preload="metadata"  controls autoplay="false">
+        </audio>
+    </div>
+
+</div>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan style='display:none' id='cnzz_stat_icon_1254018510'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254018510%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+
+</html>

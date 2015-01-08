@@ -1,0 +1,272 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<title> ljinkai/weixin_h5-微信菜单HTML版本demo </title>
+<meta name="keywords" content="微信菜单HTML版本demo ">
+<meta name="description" content="微信菜单HTML版本demo ">
+<style type="text/css">
+body{ background-color:#ededed;  -webkit-text-size-adjust: none;}
+*{padding:0; margin:0;}
+.bg {
+position: absolute;
+z-index: -1;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+opacity: 0.8;
+}
+ul, ol, li, dl {
+list-style-type: none;
+}
+.box {
+width: 100%;
+display: -webkit-box;
+display: -moz-box;
+-webkit-box-orient: horizontal;
+-moz-box-orient: horizontal;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+background:#0F0;
+}
+.box > * {
+-webkit-box-flex: 1;
+-moz-box-flex: 1;
+}
+a:link, a:visited {
+color: #575757;
+text-decoration: none;
+}
+a {
+text-decoration: none;
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0.35);
+}
+a:link, a:visited {
+color: #575757;
+text-decoration: none;
+}
+a {
+text-decoration: none;
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0.35);
+}
+
+.nav4{
+	height:45px;
+}
+.nav4 ul{
+	position:fixed;
+	z-index:200;
+	bottom:0;
+	left:0;
+	width:100%
+}
+.nav4 li{
+	border:1px solid rgba(190,190,190,1);
+	height:45px;
+	border-bottom:0;
+	border-right:0;
+	position:relative;
+	-webkit-box-shadow:inset 0 0 3px #fff;
+	float:left;
+	width:33.26%;
+}
+.nav4 li:nth-of-type(1){border-left;0;}
+.nav4 li>a{
+	font-size:15px;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	/*border:1px solid #f9f8f9;*/
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	border-bottom:0;
+	display:block;
+	line-height:45px;
+	text-align:center;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#f1f1f1), to(#dcdcdc), color-stop(35% ,#ededed), color-stop(50%, #e3e3e3) );
+}
+.nav4 li>a:only-child span{
+	background:none;
+	padding-left:0;
+}
+.nav4 li>a.on + dl{
+	display: block;
+}
+.nav4 li>a span{
+	color: #4f4d4f;
+	display: inline-block;
+	padding-left: 15px;
+	-webkit-background-size: 9px auto;
+	text-shadow:0px 1px 0px #ffffff;
+}
+/***********************/
+.nav4 dl{
+	display:none;
+	position:absolute;
+	z-index:220;
+	bottom:60px;
+	left:50%;
+	width:100px;
+	margin-left:-50px;
+
+	/*border:1px solid #afaeaf;*/
+	border-radius:5px;
+	-webkit-box-shadow:inset 0 0 3px #fff;
+	background:#E8E8E8;
+	-webkit-background-size:100%;
+	background-size:100%;
+}
+/*, .nav4 dl:after*/
+.nav4 dl:before{
+	content:"";
+	display:inline-block;
+	position:absolute;
+	z-index:240;
+	bottom:0;
+	left:50%;
+	/*width:0;
+	height:0;
+	border:8px solid red;
+	border-color:#afaeaf transparent transparent transparent;
+	margin-left:-8px;
+	margin-bottom:-16px;*/
+	width:10px;
+	height:8px;
+	-webkit-background-size: 10px auto;
+	bottom: -7px;
+	margin-left: -5px;
+}
+/*.nav4 dl:after{
+	z-index:241;
+	border-color:#e4e3e2 transparent transparent transparent;
+	margin-bottom:-15px;
+}*/
+.nav4 dl dd{
+	line-height:45px;
+	text-align:center;
+	background:-webkit-gradient(linear, 0 0, 100% 0, from(rgba(194,194,194,0.8)), to(rgba(194,194,194,0.8)), color-stop(50%, rgba(194,194,194,0.8)));
+	background-size:80% 1px;
+	background-repeat:no-repeat;
+	background-position: center bottom;
+	/*background: url(imgs/3.svg#4) no-repeat center bottom;
+	-webkit-background-size:100px 1px;*/
+}
+.nav4 dl dd:last-of-type{
+	background:none;
+}
+.nav4 dl dd a{
+	font-size: 15px;
+	display:block;
+	color:#4f4d4f;
+	text-shadow:0px 1px 0px #ffffff;
+	white-space: pre;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.nav4 .masklayer_div{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 180;
+	background: rgba(0,0,0,0);
+}
+.nav4 .masklayer_div.on{display: block;}
+</style>
+<script type="text/javascript">
+var nav4 =(function(){
+	bindClick = function(els, mask){
+		if(!els || !els.length){return;}
+		var isMobile = "ontouchstart" in window;
+		for(var i=0,ci; ci = els[i]; i++){
+			ci.addEventListener("click", evtFn, false);
+		}
+
+		function evtFn(evt, ci){
+			ci =this;
+			for(var j=0,cj; cj = els[j]; j++){
+				if(cj != ci){
+					console.log(cj);
+					cj.classList.remove("on");
+				}
+			}
+			if(ci == mask){mask.classList.remove("on");return;}
+			switch(evt.type){
+				case "click":
+					var on = ci.classList.toggle("on");
+					mask.classList[on?"add":"remove"]("on");
+				break;
+			}
+		}
+		mask.addEventListener(isMobile?"touchstart":"click", evtFn, false);
+	}
+	return {"bindClick":bindClick};
+})();
+</script>
+
+<style type="text/css"></style><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+
+ <body>
+
+<div class="bg"><img src="./home-default17.jpg" width="100%" height="100%"></div>
+
+<div class="nav4">
+
+	<nav>
+		<div id="nav4_ul" class="nav_4">
+			<ul class="box">
+				<li>
+					<a href="javascript:;" class=""><span>关于我们</span></a>
+					<dl>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>电话</span></a></dd>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>地址</span></a></dd>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>在线客服</span></a></dd>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>在线QQ</span></a></dd>
+					</dl>
+				</li>
+				<li>
+					<a href="javascript:;" class=""><span>电商</span></a>
+					<dl>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>微信会员卡</span></a></dd>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>微社区</span></a></dd>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>微投票</span></a></dd>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>微调研</span></a></dd>
+					</dl>
+				</li>
+				<li>
+					<a href="javascript:;" class=""><span>会员专区</span></a>
+					<dl>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>微商城</span></a></dd>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>微餐饮</span></a></dd>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>微团购</span></a></dd>
+						<dd><a href="http://www.songker.com/Code/htmldemo/wechatmenu.html#"><span>微汽车</span></a></dd>
+					</dl>
+				</li>
+
+			</ul>
+		</div>
+	</nav>
+
+	<div id="nav4_masklayer" class="masklayer_div">&nbsp;</div>
+
+</div>
+<script type="text/javascript">
+nav4.bindClick(document.getElementById("nav4_ul").querySelectorAll("li>a"), document.getElementById("nav4_masklayer"));
+</script>
+
+
+
+</body></html>

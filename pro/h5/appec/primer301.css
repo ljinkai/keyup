@@ -1,0 +1,605 @@
+﻿body{
+    font:0.75em/1.5 Microsoft Yahei;
+}
+*{
+    margin:0;
+    padding:0;
+    transition-timing-function: ease-in-out;
+}
+#main{
+   background: #e5e5e5;
+    overflow: hidden;
+}
+#loading{
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 3em;
+    color: #ddd;
+}
+#main .operation-section .arrow{
+    width: 200px;
+    height: 100px;
+    position: fixed;
+    bottom: 15%;
+    left: 50%;
+    right:50%;
+    margin-left:-100px;
+    margin-top:-50px;
+}
+#main .operation-section .img{
+    width: 194px;
+    height: 100px;
+    background: url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/arrow.png') 50% 50% no-repeat;
+    -webkit-animation: start 1.5s infinite ease-in-out;
+    -moz-animation: start 1.5s infinite ease-in-out;
+    animation: start 1.5s infinite ease-in-out;
+}
+#fmPage .apec-title{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    height:90%;
+    margin-top:10%;
+}
+
+#fmPage .apec-title .s1{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -220px;
+    -webkit-transform: translate(550px,0);
+    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+    -moz-transition: -webkit-transform 0.5s ease-in-out;
+    transition:  -webkit-transform 0.5s ease-in-out;
+}
+
+#fmPage .apec-title .s2{
+    position: absolute;
+    top: 225px;
+    left: 50%;
+    margin-left: -196px;
+    -webkit-transform: translate(-510px,0);
+    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+    -moz-transition: -webkit-transform 0.5s ease-in-out;
+    transition:  -webkit-transform 0.5s ease-in-out;
+}
+#fmPage .apec-title img.shift-left
+{
+    -webkit-transform: translate(0,0);
+}
+#fmPage .apec-title img.shift-right
+{
+    -webkit-transform: translate(0,0);
+}
+#fmPage .apec-title .s3
+{
+    margin-top:300px;
+    opacity: 0;
+    -webkit-transform: scale(2,2);
+    -webkit-transition: opacity 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+}
+#fmPage .apec-title img.ui-popup
+{
+    opacity: 1;
+    transform: scale(1,1);
+    -webkit-transform: scale(1,1);
+}
+
+.fixed-width{
+    width:100%;
+    height:100%;
+    position:relative;
+    margin:0 auto;
+}
+.fm-page .back-page{
+    height:100%;
+}
+.operation-section{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+    width: 100%;
+}
+.operation-section .select,
+.operation-section .decoration,
+.operation-section .back
+{
+    height: 130px;
+    width: 130px;
+    position: absolute;
+    background-image: url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/btn.png');
+
+    opacity:0;
+}
+.animation{
+    transition: all  1s;
+    -moz-transition: all 1s; /* Firefox 4 */
+    -webkit-transition: all 1s; /* Safari 和 Chrome */
+    -o-transition: all 1s; /* Opera */
+}
+.operation-section .select{
+    right: 50px;
+    top: 8%;
+    -webkit-transform: rotate(90deg);
+    background-position: 629px -3px;
+}
+.operation-section .decoration{
+    right: 50px;
+    top: 8%;
+    background-position: -450px -5px;
+}
+.operation-section .back{
+    left: 50px;
+    top: 8%;
+    background-position: 308px -5px;
+}
+
+.operation-section .select.visible{
+    -webkit-transform: rotate(0deg);
+    opacity:1;
+}
+.operation-section .select.selected{
+    opacity:1;
+    background-position: 470px -5px;
+}
+
+.operation-section .decoration.visible{
+    opacity:1;
+    background-position:-456px -2px;
+}
+
+.operation-section .decoration.selected{
+    opacity:1;
+    background-position:-599px -4px;
+}
+
+.operation-section .back.visible{
+    opacity:1;
+}
+.operation-section .back.selected{
+    background-position: 150px -5px;
+}
+
+.operation-section .opt{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 252px;
+    -webkit-transform: translate(0,252px);
+    -moz-transition: all 0.5s; /* Firefox 4 */
+    -webkit-transition: all 0.5s; /* Safari 和 Chrome */
+    -o-transition: all 0.5s; /* Opera */
+}
+.operation-section .opt.visible{
+    -webkit-transform: translate(0,0);
+}
+
+.operation-section .opt .item{
+    float: left;
+    width: 105px;
+    height: 192px;
+    background-image: url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/btn.png');
+    background-position: -107px 0;
+    padding-top: 60px;
+    color: #fff;
+    font-size: 3em;
+    writing-mode: tb-rl;
+    text-align: center;
+    margin-right:2px;
+    line-height: 40px;
+
+}
+.operation-section .opt .item.selected{
+    background-position: 0 0;
+
+}
+#fmPage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+#conPage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    background-position:50% 50%;
+    background-repeat:no-repeat;
+}
+
+#superCover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:1000;
+    width: 100%;
+    height: 100%;
+}
+#wardrobe .back-page,
+#superCover .back-page{
+
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+
+}
+#superCover .back-page.hidden-apec{
+
+
+}
+
+#light-desc{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:1001;
+    width:100%;
+    background-image:url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/light.png');
+    background-size:cover;
+    background-position:50% 50%;
+    background-repeat:no-repeat;
+}
+
+#light-desc .desc{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    font-size: 1.8em;
+    color: #fff;
+    left: 0;
+}
+#light-desc .desc .animation_3{
+    transition: all  0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out; /* Firefox 4 */
+    -webkit-transition: all 0.3s ease-in-out; /* Safari 和 Chrome */
+    -o-transition: all 0.3s ease-in-out; /* Opera */
+
+}
+
+#light-desc .desc .name{
+    height: 54px;
+    line-height: 54px;
+    padding-left: 15px;
+    font-size: 1.6em;
+    margin: 10px 0;
+    background-image:url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/tbg1.png');
+    background-position:0 50%;
+    background-repeat:no-repeat;
+    -webkit-transform: translate(-180px,0);
+    -webkit-transition-delay:0.1s;
+
+}
+
+#light-desc .desc.slide-out .name{
+    -webkit-transform: translate(0,0);
+
+}
+
+#light-desc .desc .title{
+    height: 35px;
+    line-height: 35px;
+    padding-left: 15px;
+    margin: 10px 0;
+    background-image:url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/tbg2.png');
+    background-position:0 50%;
+    background-repeat:no-repeat;
+    -webkit-transform: translate(-184px,0);
+    -webkit-transition-delay:0.3s;
+}
+
+#light-desc .desc.slide-out .title{
+    -webkit-transform: translate(0,0);
+}
+
+#light-desc .desc .country{
+    height: 35px;
+    line-height: 35px;
+    padding-left: 15px;
+    margin: 10px 0;
+    background-image:url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/tbg3.png');
+    background-position:0 50%;
+    background-repeat:no-repeat;
+    -webkit-transform: translate(-240px,0);
+    -webkit-transition-delay:0.2s;
+}
+
+#light-desc .desc.slide-out .country{
+    -webkit-transform: translate(0,0);
+}
+#wardrobe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:100;
+    width: 100%;
+    height: 100%;
+}
+#wardrobe .ward-cover{
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#wardrobe .ward-cover .image{
+    width: 100%;
+    height:100%;
+}
+#wardrobe .ward-transition{
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#wardrobe .ward-transition .image{
+    width: 100%;
+    height:100%;
+}
+.p-action{
+    z-index: 10;
+}
+.p-hide{
+    z-index: 0;
+}
+.p-active{
+    z-index: 100;
+}
+
+@-webkit-keyframes start {
+    0%,30% {opacity: 0;-webkit-transform: translate(0,10px);}
+    60% {opacity: 1;-webkit-transform: translate(0,0);}
+    100% {opacity: 0;-webkit-transform: translate(0,-8px);}
+}
+@-moz-keyframes start {
+    0%,30% {opacity: 0;-moz-transform: translate(0,10px);}
+    60% {opacity: 1;-moz-transform: translate(0,0);}
+    100% {opacity: 0;-moz-transform: translate(0,-8px);}
+}
+@keyframes start {
+    0%,30% {opacity: 0;-webkit-transform: translate(0,10px);}
+    60% {opacity: 1;-webkit-transform: translate(0,0);}
+    100% {opacity: 0;-webkit-transform: translate(0,-8px);}
+}
+.hidden-apec{
+    display: none!important;
+}
+.ward-transition{
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform : rotate3d(0,1,0,0);
+    -moz-transition: all .3s ease-in-out; /* Firefox 4 */
+    -webkit-transition: all .3s ease-in-out; /* Safari 和 Chrome */
+    -o-transition: all .3s ease-in-out; /* Opera */
+}
+.ward-transition .te-front{
+    position:absolute;
+    -webkit-backface-visibility: hidden;
+    height: 100%;
+    width: 100%;
+}
+.ward-transition .te-back{
+    position:absolute;
+    -webkit-transform : rotate3d(0,1,0,-180deg);
+    -webkit-backface-visibility: hidden;
+    height: 100%;
+    width: 100%;
+}
+.ward-transition.rotated{
+    -webkit-transform : rotate3d(0,1,0,-180deg);
+}
+.hidden-opacity{
+   opacity:0;
+}
+.no-see{
+    -webkit-transform:scale(0);
+}
+.finish-header{
+    opacity: 0;
+    background: rgba(44,44,44,0.80);
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+    font-size: 2em;
+    -webkit-transform:translate(0,-60px);
+    transition:all .3s ease-in-out;
+    -webkit-transition:all .3s ease-in-out;
+    -moz-transition:all .3s ease-in-out;
+    -o-transition:all .3s ease-in-out;
+}
+.finish-header.move-down{
+    -webkit-transform:translate(0,0);
+    opacity: 1;
+}
+.share-back{
+    text-align: center;
+    height: 200px;
+    bottom: 0;
+    position: absolute;
+
+    width: 100%;
+}
+.turn-back{
+    display: inline-block;
+    width: 250px;
+    height: 75px;
+    line-height: 75px;
+    font-size: 3em;
+    color: #fff;
+    background: #5364CC;
+    padding: 5px;
+    margin-right: 25px;
+    text-decoration: none;
+}
+.turn-share{
+    display: inline-block;
+    width: 250px;
+    height: 75px;
+    line-height: 75px;
+    font-size: 3em;
+    color: #fff;
+    background: #BD5AF5;
+    padding: 5px;
+    margin-left: 25px;
+    text-decoration: none;
+ }
+.turn-back span,
+.turn-share span{
+    display: block;
+    border: 1px dashed #fff;
+    height: 73px;
+}
+.author{
+    height: 75px;
+    line-height: 75px;
+    font-size: 2.5em;
+    text-shadow:rgba(255,255,255,0.5) 1px 1px;
+}
+.opt .cloth{
+    height: 252px;
+    width: 640px;
+    margin: 0 auto;
+}
+#superCover .slide-tip{
+    position: absolute;
+    width: 100%;
+    background: url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/updown.png') 50% 50% no-repeat;
+    height: 90px;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+}
+#shareWx{
+    position: absolute;
+    z-index: 10001;
+    width: 100%;
+    background: rgba(0,0,0, 0.7);
+    left: 0;
+    top: 0;
+}
+#shareWx img{
+    position: absolute;
+    top: 0;
+    right:0;
+}
+#design-page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10002;
+    width: 100%;
+    height: 100%;
+}
+
+#design-page .premier-desc{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    width: 100%;
+    height:100%;
+    background-image: url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/light.png');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+#design-page .premier-desc .desc{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    font-size: 1.8em;
+    color: #fff;
+    left: 0;
+}
+#design-page .premier-desc .desc .name{
+    height: 54px;
+    line-height: 54px;
+    padding-left: 15px;
+    font-size: 1.6em;
+    margin: 10px 0;
+    background-image: url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/tbg1.png');
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+}
+#design-page .premier-desc .desc .country{
+    height: 35px;
+    line-height: 35px;
+    padding-left: 15px;
+    margin: 10px 0;
+    background-image: url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/tbg3.png');
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+}
+#design-page .premier-desc .desc .title{
+    height: 35px;
+    line-height: 35px;
+    padding-left: 15px;
+    margin: 10px 0;
+    background-image: url('http://mat1.gtimg.com/news/2014/zt/apecshow/img/tbg2.png');
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+}
+#design-page .design-cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+}
+.friends-design{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#design-page .design-self{
+    text-align: center;
+    height: 200px;
+    bottom: 50px;
+    position: absolute;
+    width: 100%;
+    z-index: 10000;
+}
+.go-design{
+    display: inline-block;
+    width: 250px;
+    height: 75px;
+    line-height: 75px;
+    font-size: 3em;
+    color: #fff;
+    background: #F0505F;
+    padding: 5px;
+    text-decoration: none;
+}
+.go-design .design-btn{
+    display: block;
+    border: 1px dashed #fff;
+    height: 73px;
+}
+/******兼容腾讯新闻框架******/
+body,section,#conPage,#fmPage,#wardrobe,
+#superCover,.back-page,#light-desc,
+#shareWx,#design-page
+{
+   height:100%;
+}
+
+.scale-large{
+    -webkit-transform:scale(2,2);
+    margin-left:100px;
+}/*  |xGv00|76a998fddc9e92ac2caa324fb532abb7 */
