@@ -29,6 +29,9 @@ angular.module('app')
                 $scope.iframeSrc = "http://www.baidu.com";
                 $scope.layoutLoadFlag = false;
                 $scope.triggerItem = function(event,item) {
+                    if (item == undefined) {
+                        return false;
+                    }
                     var type = item.type;
                     $scope.layoutLoadFlag = true;
                     if (type == "rss") {
