@@ -160,4 +160,19 @@ angular.module('app')
                     }
                 }
 
+                //firebase
+                var myFirebaseRef = new Firebase("https://keyup.firebaseio.com/");
+                myFirebaseRef.set({
+                    links: newsArray
+                });
+setTimeout(function() {
+
+    myFirebaseRef.once('value', function(nameSnapshot) {
+        var val = nameSnapshot.val();
+                console.log(JSON.stringify(val));
+        // val now contains the object { first: 'Fred', last: 'Flintstone' }.
+    });
+
+},1000);
+
          }]);
