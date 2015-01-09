@@ -17,6 +17,7 @@
             <div class="category_item" ng-class="{'category_item_active':activeType == 'rss'}" ng-click="showList($event,'rss')">RSS</div>
             <div class="category_item" ng-class="{'category_item_active':activeType == 'webo'}" ng-click="showList($event,'webo')">微博</div>
             <div class="category_item" ng-class="{'category_item_active':activeType == 'comm'}" ng-click="showList($event,'comm')">社区</div>
+            <a class="category_item" href="h5/index.html" target="_blank" ng-class="{'category_item_active':activeType == 'h5'}">H5</a>
         </div>
         <div class="summary_body">
             <div ng-repeat="item in newsArray" class="summary_item"
