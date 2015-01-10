@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="en" />
+    <title>Keyup - see what you want</title>
+    <meta name="description" content="Copyright http://keyup.cn">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body ng-app="app">
+<div ng-controller="WelcomeCtrl" class="container layout" ng-style="layoutObj">
+    <div class="col-xs-3 summary">
+        <div class="category_head text-center">Keyup</div>
+        <div class="summary_head">
+            <div class="category_item" ng-class="{'category_item_active':activeType == 'news'}" ng-click="showList($event,'news')">新闻</div>
+            <div class="category_item" ng-class="{'category_item_active':activeType == 'rss'}" ng-click="showList($event,'rss')">RSS</div>
+            <div class="category_item" ng-class="{'category_item_active':activeType == 'webo'}" ng-click="showList($event,'webo')">微博</div>
+            <div class="category_item" ng-class="{'category_item_active':activeType == 'comm'}" ng-click="showList($event,'comm')">社区</div>
+            <a class="category_item" href="h5/index.html" target="_blank" ng-class="{'category_item_active':activeType == 'h5'}">H5</a>
+        </div>
+        <div class="summary_body">
+            <div ng-repeat="item in newsArray" class="summary_item"
+                 ng-click="triggerItem($event, item)"
+                 ng-class="{'summary_item_active':item.url == activeUrl}">
+                <div class="summary_title" ng-bind="item.title"></div>
+                <div class="summary_con" ng-bind="item.des"></div>
+            </div>
+            <div class="list_add_btn text-center">
+                <button id="add" type="button" class="btn btn-primary" style="width: 100%;"
+                        data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-plus"></span>添加
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-9 content">
+        <div class="content_head text-right">
+            <button type="button" class="btn btn-primary">
+                原文
+            </button>
+            <button type="button" class="btn btn-primary">
+                分享
+            </button>
+        </div>
+        <div class="content_body">
+            <iframe id="frame" src="" ng-show="bodyActiveFlag == 'news'" style="width: 100%;height: 100%;border: none;overflow-x:hidden"></iframe>
+            <div class="rss_content_list" id="rss_content_list" ng-show="bodyActiveFlag == 'rss'"></div>
+            <div class="layoutLoad" ng-show="layoutLoadFlag"></div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">添加新网址</h4>
+                </div>
+                <div class="row modal-body">
+                    <div class="col-xs-10">
+                        <input id="input_url" class="form-control" placeholder="网址" ng-model="input_url"/><br>
+                        <input id="input_title" class="form-control" placeholder="标题" ng-model="input_title" ng-show="showAddDetailFlag"/><br>
+                        <textarea class="form-control" placeholder="描述" rows="5" ng-model="input_des" ng-show="showAddDetailFlag"></textarea>
+                    </div>
+                    <div class="col-xs-2">
+                        <button type="button" class="btn btn-primary" ng-click="showAddDetail($event)" ng-bind="showAddDetailBtnTip"></button>
+                    </div>
+                </div>
+                <div class="row pop_content">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#t_news" role="tab" data-toggle="tab">news</a></li>
+                        <li role="presentation"><a href="#t_rss" role="tab" data-toggle="tab">rss</a></li>
+                        <li role="presentation"><a href="#t_weibo" role="tab" data-toggle="tab">微博</a></li>
+                        <li role="presentation"><a href="#t_comm" role="tab" data-toggle="tab">社区</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="t_news">
+                            <div class="col-xs-6"  ng-repeat="check in checks" ng-if="check.type == 'news'">
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="checkItem" type="checkbox" data="{{check}}">{{check.title}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="t_rss">
+                            <div class="col-xs-6"  ng-repeat="check in checks" ng-if="check.type == 'rss'">
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="checkItem" type="checkbox" data="{{check}}">{{check.title}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="t_weibo">
+                            <div class="col-xs-6"  ng-repeat="check in checks" ng-if="check.type == 'weibo'">
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="checkItem" type="checkbox" data="{{check}}">{{check.title}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="t_comm">
+                            <div class="col-xs-6"  ng-repeat="check in checks" ng-if="check.type == 'comm'">
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="checkItem" type="checkbox" data="{{check}}">{{check.title}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="addOneRecord($event)">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="bower_components/lawnchair/src/Lawnchair.js"></script>
+<script src="bower_components/lawnchair/src/adapters/webkit-sqlite.js"></script>
+<script src="bower_components/lawnchair/src/adapters/dom.js"></script>
+<script src="scripts/jquery.zrssfeed.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.1.0/firebase.js"></script>
+<script src="scripts/angular/app.js"></script>
+<script src="scripts/angular/controller.js"></script>
+
+</body>
+</html>

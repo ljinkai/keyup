@@ -9,20 +9,22 @@ angular.module('app')
                 var store = new Lawnchair({name:'shelf'}, function(store) {
                 });
 
+                // news,fontEnd,tools,css,source,book
+                //
                 var newsArray = [
-                    {"title":"前端乱炖","des":"前端乱炖，专业的前端社区","url":"http://www.html-js.com/","type":"news"},
                     {"title":"商业价值","des":"发现创新、持续的商业价值","url":"http://content.businessvalue.com.cn/","type":"news"},
                     {"title":"业界资讯","des":"最新的业界资讯","url":"http://www.cnbeta.com/","type":"news"},
-                    {"title":"Reeder","des":"从Reeder 2 For Mac浅谈RSS客户端","url":"http://sspai.com/25117","type":"news"},
-                    {"title":"36氪","des":"互联网新闻资讯","url":"http://www.36kr.com/","type":"news"},
-                    {"title":"奇舞周刊","des":"RSS订阅，每周一期","url":"http://www.75team.com/weekly/","type":"news"},
-                    {"title":"简书","des":"重新找到文字的力量","url":"http://www.jianshu.com/","type":"news"},
-                    {"title":"quora","des":"Learn English","url":"https://www.quora.com/","type":"news"},
+                    {"title":"36氪","des":"互联网新闻资讯","url":"http://www.36kr.com/","type":"news","label":"创业"},
+                    {"title":"demo8","des":"发现最新的好产品","url":"http://www.demo8.com/","type":"discover","label":"产品"},
                     {"title":"知乎周刊","des":"知乎周刊","url":"http://www.zhihu.com/rss","type":"rss"},
                     {"title":"业界咨询","des":"业界咨询","url":"http://feeds2.feedburner.com/cnbeta_full","type":"rss"},
-                    {"title":"前端乱炖","des":"前端乱炖，专业的前端社区","url":"http://www.html-js.com/","type":"weibo"},
-                    {"title":"w3ctech","des":"http://www.w3ctech.com/","url":"http://www.w3ctech.com/","type":"comm"},
-                    {"title":"w3cfuns","des":"http://www.w3cfuns.com/","url":"http://www.w3cfuns.com/","type":"comm"}
+                    {"title":"w3cfuns","des":"http://www.w3cfuns.com/","url":"http://www.w3cfuns.com/","type":"fontEnd"},
+                    {"title":"前端乱炖","des":"前端乱炖，专业的前端社区","url":"http://www.html-js.com/","type":"fontEnd","label":"知识"},
+                    {"title":"奇舞周刊","des":"RSS订阅，每周一期","url":"http://www.75team.com/weekly/","type":"fontEnd","label":"订阅"},
+                    {"title":"quora","des":"Learn English","url":"https://www.quora.com/","type":"news","label":"英语"},
+                    {"title":"简书","des":"重新找到文字的力量","url":"http://www.jianshu.com/","type":"book"}
+
+
                 ];
                 $scope.newsArray = [];
                 $scope.checks = newsArray;
