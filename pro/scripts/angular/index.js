@@ -15,6 +15,7 @@ angular.module('app')
                             $scope.webSiteArray = val.links;
                             $scope.layoutLoadFlag = false;
                         });
+                        $scope.weibo();
                     });
                 };
 
@@ -80,18 +81,20 @@ angular.module('app')
                 //$scope.initData();
                 $scope.initWebSite();
 
-                // weibo
-                WB2.anyWhere(function(W){
-                    W.parseCMD("2/favorites.json", function(sResult, bStatus){
-                        try{
-                            //to do something...
-                            console.log("fav::" + sResult);
-                        }catch(e){}
-                    },{
-                        uid: '123456789'
-                    },{
-                        method: 'get'
+                $scope.weibo = function() {
+                    // weibo
+                    WB2.anyWhere(function(W){
+                        W.parseCMD("2/favorites.json", function(sResult, bStatus){
+                            try{
+                                //to do something...
+                                console.log("fav::" + sResult);
+                            }catch(e){}
+                        },{
+                            uid: '123456789'
+                        },{
+                            method: 'get'
+                        });
                     });
-                });
+                }
 
          }]);
