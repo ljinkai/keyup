@@ -89,10 +89,6 @@ angular.module('app')
                                 //to do something...
                                 console.log("fav::" + sResult);
                             }catch(e){}
-                        },{
-                            uid: '123456789'
-                        },{
-                            method: 'get'
                         });
                     });
                 }
