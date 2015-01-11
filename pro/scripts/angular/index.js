@@ -83,12 +83,20 @@ angular.module('app')
 
                 $scope.weibo = function() {
                     // weibo
+
+
                     WB2.anyWhere(function(W){
-                        W.parseCMD("2/favorites.json", function(sResult, bStatus){
-                            try{
+                        //数据交互
+                        W.parseCMD('/2/favorites.json', function(oResult, bStatus) {
+                            console.log("fav::" + oResult);
+                            if(bStatus) {
                                 //to do something...
-                                console.log("fav::" + sResult);
-                            }catch(e){}
+                            }
+                        }, {
+                            app_secret : '58a282dfb5d90518c5c86b1d00a6c0ee'
+                        }, {
+                            method : 'get',
+                            cache_time : 30
                         });
                     });
                 }
