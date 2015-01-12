@@ -93,7 +93,7 @@ angular.module('app')
                                 //to do something...
                             }
                         }, {
-                            app_secret : '58a282dfb5d90518c5c86b1d00a6c0ee'
+                            access_token : '58a282dfb5d90518c5c86b1d00a6c0ee'
                         }, {
                             method : 'get',
                             cache_time : 30
