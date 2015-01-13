@@ -23,7 +23,15 @@ angular.module('app')
                     // news,fontEnd,tools,css,source,book
                     //
                     var newsArray = {
-                        "11_news" :{
+                        "11_fontEnd" : {
+                            "items":[
+                                {"title":"w3cfuns","des":"http://www.w3cfuns.com/","url":"http://www.w3cfuns.com/","type":"fontEnd","label":"综合"},
+                                {"title":"前端乱炖","des":"前端乱炖，专业的前端社区","url":"http://www.html-js.com/","type":"fontEnd","label":"知识"},
+                                {"title":"奇舞周刊","des":"RSS订阅，每周一期","url":"http://www.75team.com/weekly/","type":"fontEnd","label":"订阅"}
+                            ],
+                            "title":"前端站"
+                        },
+                        "12_news" :{
                             "items" : [
                                 {"title":"商业价值","des":"发现创新、持续的商业价值","url":"http://content.businessvalue.com.cn/","type":"news","label":"商业"},
                                 {"title":"业界资讯","des":"最新的业界资讯","url":"http://www.cnbeta.com/","type":"news","label":"新闻"},
@@ -31,22 +39,15 @@ angular.module('app')
                                 {"title":"quora","des":"Learn English","url":"https://www.quora.com/","type":"news","label":"英语"}
                             ],
                             "title":"资讯"
-                        } ,
-                        "12_discover" : {
+                        },
+                        "13_discover" : {
                             "items":[
                                 {"title":"demo8","des":"发现最新的好产品","url":"http://www.demo8.com/","type":"discover","label":"产品"},
                                 {"title":"Maka","des":"H5在线制作","url":"http://www.maka.im/home/index.html","type":"discover","label":"H5"},
-                                {"title":"微信H5","des":"关于微信的H5应用","url":"http://h5.keyup.cn","type":"discover","label":"微信"}
+                                {"title":"微信H5","des":"关于微信的H5应用","url":"http://h5.keyup.cn","type":"discover","label":"微信"},
+                                {"title":"精装纪","des":"精装设计","url":"http://jingzhuangji.com/","type":"discover","label":"设计"}
                             ],
                             "title":"发现"
-                        },
-                        "13_fontEnd" : {
-                            "items":[
-                                {"title":"w3cfuns","des":"http://www.w3cfuns.com/","url":"http://www.w3cfuns.com/","type":"fontEnd","label":"综合"},
-                                {"title":"前端乱炖","des":"前端乱炖，专业的前端社区","url":"http://www.html-js.com/","type":"fontEnd","label":"知识"},
-                                {"title":"奇舞周刊","des":"RSS订阅，每周一期","url":"http://www.75team.com/weekly/","type":"fontEnd","label":"订阅"}
-                            ],
-                            "title":"前端站"
                         },
                         "14_rss" : {
                             "items":[
@@ -66,11 +67,13 @@ angular.module('app')
                             "items":[
                                 {"title":"leanCloud","des":"为应用开发加速","url":"https://leancloud.cn/","type":"tools","label":"js"},
                                 {"title":"apiCloud","des":"重新定义移动开发","url":"https://www.apicloud.com/","type":"tools","label":"后台api"},
-                                {"title":"j-proxy","des":"翻墙代理工具","url":"http://j-proxy.net","type":"tools","label":"代理"}
+                                {"title":"j-proxy","des":"翻墙代理工具","url":"http://j-proxy.net","type":"tools","label":"代理"},
+                                {"title":"animate.css","des":"css动画效果查询","url":"http://daneden.github.io/animate.css/","type":"tools","label":"css"}
                             ],
                             "title":"工具"
                         }
                     };
+
 
                     //firebase
                     myFirebaseRef.set({

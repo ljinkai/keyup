@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>煎蛋锅</title>
+    <style>
+        .wrap{ width:120px; height:120px;background:#fcd6d5;margin:100px auto; clear:both; padding:80px;}
+        .egg{position:relative;}
+        .egg::after{content:'';width:120px; height:120px; display:inline-block; background:#fff; border-radius:100%; border:2px solid #9a9a9a; position:absolute; left:0; top:0; z-index:1}
+        .egg::before{content:'';width:100px; height:100px;position:absolute;left:10px; top:10px; display:inline-block; background:#9c9c9c;border:2px solid #2c2724;border-radius:100%; z-index:2}
+        .face{position:absolute;left:25px; top:25px; width:70px; height:70px;border-radius:100%;background:#f7c846;border:2px solid #2c2724; z-index:3}
+        .face::after{content:'';position:absolute; bottom:-10px; left:24px; width:13px; height:18px;background:#f7c846;border:2px solid #2c2724;border-radius:100%;clip:rect(10px auto auto 0);}
+        .eyes{position:absolute;left:0;top:0;width:6px; height:6px; display:inline-block; background:#000; border-radius:100%; left:18px; top:22px; box-shadow:26px 0 0 0;}
+        .eyes::before{content:'';position:absolute;left:-14px;top:-15px;width:50px; height:50px;  border:2px solid #fff;clip:rect(0 24px 20px 0);border-radius:100%; }
+        .eyes::after{content:'';position:absolute;left:13px;top:-17px;width:3px; height:3px; background:#fff; border-radius:100%;}
+        .lian{position:absolute;left:9px;top:35px; width:1px; height:5px; border-radius:2px; background:#000; box-shadow:3px 0 0 0,6px 0 0 0; transform:skewX(-20deg)}
+        .lian::after{content:'';position:absolute;left:39px;top:0; width:1px; height:5px; border-radius:2px; background:#000; box-shadow:3px 0 0 0,6px 0 0 0; transform:skewX(20deg)}
+        .mouse{ position:absolute;left:25px;top:0px; width:12px; height:70px; background:#de4b53;border:2px solid #2c2724; border-radius:100%; z-index:3;clip:rect(35px 73px auto -6px);}
+        .mouse::before{content:'';position:absolute;left:-10px;top:26px; width:12px; height:10px; background:#f6c745;border:2px solid #2c2724; border-radius:100%;clip:rect(7px 24px 20px 2px);}
+        .mouse::after{content:'';position:absolute;left:3px;top:26px; width:12px; height:10px; background:#f6c745;border:2px solid #2c2724; border-radius:100%;clip:rect(7px 24px 20px 2px);}
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="egg">
+        <div class="face">
+            <div class="eyes"></div>
+            <div class="lian"></div>
+            <div class="mouse"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
