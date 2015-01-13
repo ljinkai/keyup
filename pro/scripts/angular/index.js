@@ -18,6 +18,25 @@ angular.module('app')
                         $scope.weibo();
                     });
                 };
+                $scope.bodyActive = "site";
+                $scope.showBody = function(event,type) {
+                    $scope.bodyActive = type;
+                    if (type == "rss") {
+                        $scope.readRssData();
+                    }
+                };
+                $scope.readRssData = function() {
+                    var rssArray = [
+                            {"title":"知乎周刊","des":"知乎周刊","url":"http://www.zhihu.com/rss","type":"rss","label":"知乎"},
+                            {"title":"业界咨询","des":"业界资讯","url":"http://feeds2.feedburner.com/cnbeta_full","type":"rss","label":"杂"}
+                    ];
+                    $scope.rssArray = rssArray;
+                    angular.forEach(rssArray, function(item, key) {
+                        $('#rss_block_' + key).rssfeed(item.url,{"linktarget":"_blank"}, function() {
+                            alert(999);
+                        });
+                    });
+                };
 
                 $scope.initData = function() {
                     // news,fontEnd,tools,css,source,book

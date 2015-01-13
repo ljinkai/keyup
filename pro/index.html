@@ -12,10 +12,10 @@
 </head>
 <body ng-app="app" ng-controller="IndexCtrl" class="container layout">
 <nav class="text-center">
-    <div class="col-xs-5 nav_item nav_active">
+    <div class="col-xs-5 nav_item nav_active" ng-click="showBody($event,'site')">
         网址
     </div>
-    <div class="col-xs-5 nav_item">
+    <div class="col-xs-5 nav_item" ng-click="showBody($event,'rss')">
         rss
     </div>
     <div class="col-xs-2 nav_item" style="padding-top: 10px;">
@@ -24,7 +24,7 @@
 </nav>
 <div class="layoutLoad" ng-show="layoutLoadFlag"></div>
 <div class="web_body row">
-        <div class="web_block col-xs-12" ng-repeat="(key, types) in webSiteArray">
+        <div class="web_block col-xs-12 hide" ng-class="{'show':bodyActive == 'site'}" ng-repeat="(key, types) in webSiteArray">
             <div class="web_block_nav col-xs-12" ng-bind="types.title"></div>
             <div class="col-xs-3" ng-repeat="item in types.items">
                 <a ng-href="{{item.url}}" target="_blank" ng-bind="item.title"></a>
@@ -32,6 +32,14 @@
                 <div class="web_block_des" ng-bind="item.des"></div>
             </div>
         </div>
+    <div id="web_block_rss" class="web_block_rss hide" ng-class="{'show':bodyActive == 'rss'}">
+        <div ng-repeat="rss in rssArray">
+            <div>
+                <h2 ng-bind="rss.title"></h2>
+                <div id="rss_block_{{$index}}"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
