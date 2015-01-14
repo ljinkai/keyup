@@ -72,19 +72,24 @@
 			options.limit += options.offset;
 			
 			// Create Google Feed API address
-			var api = "http"+ s +"://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent(url);
-			api += "&num=" + options.limit;
-			if (options.historical) api += "&scoring=h";
-			if (options.key != null) api += "&key=" + options.key;
-			api += "&output=json_xml"
+            var yahoo = "select * from xml where url='" + encodeURIComponent(url) + "'"
+            var api = "https://query.yahooapis.com/v1/public/yql?q=" + yahoo + "&format=json&diagnostics=true&num=4&callback=";
+
+
+
+//			var api = "http"+ s +"://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent(url);
+//			api += "&num=" + options.limit;
+//			if (options.historical) api += "&scoring=h";
+//			if (options.key != null) api += "&key=" + options.key;
+//			api += "&output=json_xml"
 
 			// Send request
 			$.getJSON(api, function(data){
 				// Check for error
-				if (data.responseStatus == 200) {
+				if (data) {
 	
 					// Process the feeds
-					_process(e, data.responseData, options);
+					_process(e, data, options);
 
 					// Optional user callback function
 					if ($.isFunction(fn)) fn.call(this,$e);
@@ -108,8 +113,10 @@
 	var _process = function(e, data, options) {
 
 		// Get JSON feed data
-		var feeds = data.feed;
-		if (!feeds) {
+        console.log(data);
+		var feeds = data.query.results.rss.channel;
+
+        if (!feeds) {
 			return false;
 		}
 		var rowArray = [];
@@ -135,13 +142,13 @@
 
 
 		// Add feeds
-		for (var i=options.offset; i<feeds.entries.length; i++) {
+		for (var i=options.offset; i<feeds.item.length; i++) {
 			
 			rowIndex = i - options.offset;
 			rowArray[rowIndex] = [];
 
 			// Get individual feed
-			var entry = feeds.entries[i];
+			var entry = feeds.item[i];
 			var pubDate;
 			var sort = '';
 			var feedLink = entry.link;

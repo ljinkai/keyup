@@ -26,7 +26,7 @@ angular.module('app')
                     }
                 };
                 var rssArray = [
-                        {"title":"业界资讯","des":"业界资讯","url":"http://feeds2.feedburner.com/cnbeta_full","type":"rss","label":"杂"},
+                        {"title":"业界资讯","des":"业界资讯","url":"http://cnbeta.feedsportal.com/c/34306/f/624776/index.rss","type":"rss","label":"杂"},
                         {"title":"知乎周刊","des":"知乎周刊","url":"http://www.zhihu.com/rss","type":"rss","label":"知乎"},
                         {"title":"极客公园","des":"极客早知道","url":"http://www.geekpark.net/rss","type":"rss","label":"极客"},
                         {"title":"异次元软件世界","des":"异次元软件世界","url":"http://feed.iplaysoft.com/","type":"rss","label":"软件"}
