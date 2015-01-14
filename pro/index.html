@@ -12,15 +12,15 @@
 </head>
 <body ng-app="app" ng-controller="IndexCtrl" class="container layout">
 <nav class="text-center">
-    <div class="col-xs-5 nav_item nav_active" ng-click="showBody($event,'site')">
+    <div class="col-xs-6 nav_item nav_active" ng-click="showBody($event,'site')">
         网址
     </div>
-    <div class="col-xs-5 nav_item" ng-click="showBody($event,'rss')">
+    <div class="col-xs-6 nav_item" ng-click="showBody($event,'rss')">
         rss
     </div>
-    <div class="col-xs-2 nav_item" style="padding-top: 10px;">
-        <wb:share-button type="button" count="n" size="middle"> </wb:share-button>
-    </div>
+    <!--<div class="col-xs-2 nav_item" style="padding-top: 10px;">-->
+        <!--<wb:share-button type="button" count="n" size="middle"> </wb:share-button>-->
+    <!--</div>-->
 </nav>
 <div class="layoutLoad" ng-show="layoutLoadFlag"></div>
 <div class="web_body row">
@@ -35,8 +35,10 @@
     <div id="web_block_rss" class="web_block_rss hide" ng-class="{'show':bodyActive == 'rss'}">
         <div ng-repeat="rss in rssArray">
             <div>
-                <h2 ng-bind="rss.title"></h2>
-                <div id="rss_block_{{$index}}"></div>
+                <h1 class="rss_h1" ng-bind="rss.title"></h1>
+                <div id="rss_block_{{$index}}">
+                    加载中...
+                </div>
             </div>
         </div>
     </div>
@@ -51,7 +53,7 @@
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="scripts/jquery.zrssfeed.js"></script>
-<script src="https://cdn.firebase.com/js/client/2.1.0/firebase.js"></script>
+<script src="scripts/firebase.js"></script>
 <script src="scripts/angular/app.js"></script>
 <script src="scripts/angular/index.js"></script>
 

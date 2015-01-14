@@ -52,7 +52,7 @@
 			historical: false
 		};  
 		var options = $.extend(defaults, options); 
-		
+
 		// Functions
 		return this.each(function(i, e) {
 			var $e = $(e);
