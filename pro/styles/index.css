@@ -21,6 +21,7 @@
 }
 .rss_h1 {font-size: 25px;}
 .rssBody li {}
+.rssBody li a {color: #000000;font-weight: normal;padding-left: 60px;}
 .web_block {list-style: none;
     line-height: 20px;position: relative;
     padding-bottom: 10px;

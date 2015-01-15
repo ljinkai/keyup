@@ -191,7 +191,7 @@
 			if (options.linkredirect) feedLink = encodeURIComponent(feedLink);
 			rowArray[rowIndex]['html'] = '<'+ options.titletag +'><a href="'+ options.linkredirect + feedLink +'" title="View this feed at '+ feeds.title +'">'+ entry.title +'</a></'+ options.titletag +'>'
 
-			if (options.date && pubDate) rowArray[rowIndex]['html'] += '<div>'+ pubDate +'</div>'
+//			if (options.date && pubDate) rowArray[rowIndex]['html'] += '<div>'+ pubDate +'</div>'
 			if (options.content) {
 				// Use feed snippet if available and optioned
 				if (options.snippet && entry.contentSnippet != '') {
