@@ -14,14 +14,14 @@
 .nav_item {height: 45px;line-height: 45px;font-weight: bold;cursor: pointer;}
 .nav_item:hover {color: orangered;}
 .nav_active {border-bottom: 1px orangered solid;}
-.web_body {padding-top: 60px;}
+.web_body {padding-top: 60px;padding-left: 60px;}
 .web_block_rss {
     display: none;
     padding-bottom: 50px;
 }
 .rss_h1 {font-size: 25px;}
 .rssBody li {}
-.rssBody li a {color: #000000;font-weight: normal;padding-left: 60px;}
+.rssBody li a {color: #000000;font-weight: normal;}
 .web_block {list-style: none;
     line-height: 20px;position: relative;
     padding-bottom: 10px;
