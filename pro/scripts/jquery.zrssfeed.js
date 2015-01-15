@@ -33,12 +33,12 @@
 		var defaults = {
 			limit: 10,
 			offset: 1,
-			header: true,
+			header: false,
 			titletag: 'h4',
 			date: true,
 			dateformat: 'datetime',
 			content: true,
-			snippet: true,
+			snippet: false,
 			media: true,
 			showerror: true,
 			errormsg: '',
@@ -72,7 +72,7 @@
 			options.limit += options.offset;
 			
 			// Create Google Feed API address
-            var yahoo = "select * from xml where url='" + encodeURIComponent(url) + "'"
+            var yahoo = 'select * from feed where url="' + encodeURIComponent(url) + '" | truncate(count=10)';
             var api = "https://query.yahooapis.com/v1/public/yql?q=" + yahoo + "&format=json&diagnostics=true&num=4&callback=";
 
 
@@ -114,7 +114,7 @@
 
 		// Get JSON feed data
         console.log(data);
-		var feeds = data.query.results.rss.channel;
+		var feeds = data.query.results;
 
         if (!feeds) {
 			return false;
@@ -152,22 +152,21 @@
 			var pubDate;
 			var sort = '';
 			var feedLink = entry.link;
-console.log("feedlink::" + feedLink);
 			// Apply sort column
 			switch (options.sort) {
 				case 'title':
 					sort = entry.title;
 					break;
 				case 'date':
-					sort = entry.publishedDate;
+					sort = entry.pubDate;
 					break;
 			}
 			rowArray[rowIndex]['sort'] = sort;
 
 			// Format published date
-			if (entry.publishedDate) {
+			if (entry.pubDate) {
 
-				var entryDate = new Date(entry.publishedDate);
+				var entryDate = new Date(entry.pubDate);
 				var pubDate = entryDate.toLocaleDateString() + ' ' + entryDate.toLocaleTimeString();
 
 				switch (options.dateformat) {
@@ -194,19 +193,18 @@ console.log("feedlink::" + feedLink);
 
 			if (options.date && pubDate) rowArray[rowIndex]['html'] += '<div>'+ pubDate +'</div>'
 			if (options.content) {
-			
 				// Use feed snippet if available and optioned
 				if (options.snippet && entry.contentSnippet != '') {
 					var content = entry.contentSnippet;
 				} else {
-					var content = entry.content;
+					var content = entry.description.substring(0,100);
 				}
 
 				if (options.linkcontent) {
 					content = '<a href="'+ options.linkredirect + feedLink +'" title="View this feed at '+ feeds.title +'">'+ content +'</a>'
 				}
-				
-				rowArray[rowIndex]['html'] += '<p>'+ content +'</p>'
+
+//				rowArray[rowIndex]['html'] += '<p>'+ content +'</p>'
 			}
 			
 			// Add any media
