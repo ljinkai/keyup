@@ -113,7 +113,7 @@
 	var _process = function(e, data, options) {
 
 		// Get JSON feed data
-        console.log(data);
+//        console.log(data);
 		var feeds = data.query.results;
 
         if (!feeds) {
