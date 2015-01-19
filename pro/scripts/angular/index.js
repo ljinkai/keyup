@@ -30,7 +30,7 @@ angular.module('app')
                         {"title":"36氪","des":"36氪","url":"http://www.36kr.com/feed/","type":"rss","label":"创业"},
                         {"title":"知乎周刊","des":"知乎周刊","url":"http://www.zhihu.com/rss","type":"rss","label":"知乎"},
                         {"title":"极客公园","des":"极客早知道","url":"http://www.geekpark.net/rss","type":"rss","label":"极客"},
-                        {"title":"异次元软件世界","des":"异次元软件世界","url":"http://feed.iplaysoft.com/","type":"rss","label":"软件"}
+                        {"title":"奇舞周刊","des":"奇舞周刊","url":"http://www.75team.com/weekly/rss.php","type":"rss","label":"周刊"}
                 ];
                 $scope.rssArray = rssArray;
                 $scope.readRssData = function() {
@@ -48,6 +48,9 @@ angular.module('app')
                             "items":[
                                 {"title":"w3cfuns","des":"http://www.w3cfuns.com/","url":"http://www.w3cfuns.com/","type":"fontEnd","label":"综合"},
                                 {"title":"前端乱炖","des":"前端乱炖，专业的前端社区","url":"http://www.html-js.com/","type":"fontEnd","label":"知识"},
+                                {"title":"前端里","des":"前端里","url":"http://www.yyyweb.com/","type":"fontEnd","label":"综合"},
+                                {"title":"web前端开发","des":"web前端开发","url":"http://www.css88.com/","type":"fontEnd","label":"综合"},
+                                {"title":"web前端资源网","des":"web前端资源网","url":"http://www.58img.com/","type":"fontEnd","label":"资源"},
                                 {"title":"奇舞周刊","des":"RSS订阅，每周一期","url":"http://www.75team.com/weekly/","type":"fontEnd","label":"订阅"}
                             ],
                             "title":"前端站"
@@ -89,7 +92,8 @@ angular.module('app')
                                 {"title":"leanCloud","des":"为应用开发加速","url":"https://leancloud.cn/","type":"tools","label":"js"},
                                 {"title":"apiCloud","des":"重新定义移动开发","url":"https://www.apicloud.com/","type":"tools","label":"后台api"},
                                 {"title":"j-proxy","des":"翻墙代理工具","url":"http://j-proxy.net","type":"tools","label":"代理"},
-                                {"title":"animate.css","des":"css动画效果查询","url":"http://daneden.github.io/animate.css/","type":"tools","label":"css"}
+                                {"title":"animate.css","des":"css动画效果查询","url":"http://daneden.github.io/animate.css/","type":"tools","label":"css"},
+                                {"title":"snabbt.js","des":"css动画效果查询","url":"http://daniel-lundin.github.io/snabbt.js/","type":"tools","label":"js"}
                             ],
                             "title":"工具"
                         }

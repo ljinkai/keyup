@@ -12,10 +12,10 @@
 </head>
 <body ng-app="app" ng-controller="IndexCtrl" class="container layout">
 <nav class="text-center">
-    <div class="col-xs-6 nav_item nav_active" ng-click="showBody($event,'site')">
+    <div class="col-xs-6 nav_item" ng-class="{'nav_active':bodyActive == 'site'}" ng-click="showBody($event,'site')">
         网址
     </div>
-    <div class="col-xs-6 nav_item" ng-click="showBody($event,'rss')">
+    <div class="col-xs-6 nav_item" ng-class="{'nav_active':bodyActive == 'rss'}" ng-click="showBody($event,'rss')">
         rss
     </div>
     <!--<div class="col-xs-2 nav_item" style="padding-top: 10px;">-->
@@ -26,7 +26,7 @@
 <div class="web_body row">
         <div class="web_block col-xs-12 hide" ng-class="{'show':bodyActive == 'site'}" ng-repeat="(key, types) in webSiteArray">
             <div class="web_block_nav col-xs-12" ng-bind="types.title"></div>
-            <div class="col-xs-3" ng-repeat="item in types.items">
+            <div class="col-xs-3 web_block_item" ng-repeat="item in types.items">
                 <a ng-href="{{item.url}}" target="_blank" ng-bind="item.title"></a>
                 <span class="web_label web_label-{{item.type}}" ng-bind="item.label"></span>
                 <div class="web_block_des" ng-bind="item.des"></div>

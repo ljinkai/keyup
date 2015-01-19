@@ -31,6 +31,9 @@
     height: 25px;line-height: 25px;font-size: 14px;color: gray;
     margin-bottom: 4px;
     text-shadow: 1px 1px 1px #fefefe;}
+.web_block_item {
+    margin-bottom: 12px;
+}
 .web_block_des {font-size: 8px;color: gray;}
 .web_label {padding: 0px 0px;margin:0px 3px;background-color: #0d3349;color: #ffffff;border-radius: 2px;font-size: 4px;}
 .web_label-news {background-color: #006DAF;color: #ffffff;}
