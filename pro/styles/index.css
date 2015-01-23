@@ -19,8 +19,9 @@
     display: none;
     padding-bottom: 50px;
 }
+.rss_body {padding-left: 60px;}
 .rss_h1 {font-size: 25px;}
-.rssBody {padding-left: 60px;}
+.rssBody {}
 .rssBody li {}
 .rssBody li a {color: #000000;font-weight: normal;}
 .web_block {list-style: none;
