@@ -28,10 +28,11 @@ angular.module('app')
                 var rssArray = [
                         {"title":"业界资讯","des":"业界资讯","url":"http://cnbeta.feedsportal.com/c/34306/f/624776/index.rss","type":"rss","label":"杂"},
                         {"title":"36氪","des":"36氪","url":"http://www.36kr.com/feed/","type":"rss","label":"创业"},
-                        {"title":"知乎周刊","des":"知乎周刊","url":"http://www.zhihu.com/rss","type":"rss","label":"知乎"},
-                        {"title":"极客公园","des":"极客早知道","url":"http://www.geekpark.net/rss","type":"rss","label":"极客"},
                         {"title":"善用佳软","des":"善用佳软","url":"http://feed.xbeta.info/","type":"rss","label":"佳软"},
+                        {"title":"techcrunch","des":"IT新闻","url":"http://techcrunch.cn/feed/","type":"rss","label":"IT"},
+                        {"title":"极客公园","des":"极客早知道","url":"http://www.geekpark.net/rss","type":"rss","label":"极客"},
                         {"title":"爱范儿","des":"爱范儿","url":"http://www.ifanr.com/feed","type":"rss","label":"爱范儿"},
+                        {"title":"知乎周刊","des":"知乎周刊","url":"http://www.zhihu.com/rss","type":"rss","label":"知乎"},
                         {"title":"泛科学","des":"泛科学","url":"http://pansci.tw/feed","type":"rss","label":"泛科学"},
                         {"title":"联合早报国际","des":"联合早报国际","url":"http://zaobao.feedsportal.com/c/34003/f/616931/index.rss","type":"rss","label":"国外"}
                 ];
@@ -41,7 +42,6 @@ angular.module('app')
                         $('#rss_block_' + key).rssfeed(item.url,{"linktarget":"_blank"}, function() {
                         });
                     });
-
                 };
                 $scope.initData = function() {
                     // news,fontEnd,tools,css,source,book
@@ -63,6 +63,7 @@ angular.module('app')
                                 {"title":"商业价值","des":"发现创新、持续的商业价值","url":"http://content.businessvalue.com.cn/","type":"news","label":"商业"},
                                 {"title":"业界资讯","des":"最新的业界资讯","url":"http://www.cnbeta.com/","type":"news","label":"新闻"},
                                 {"title":"36氪","des":"互联网新闻资讯","url":"http://www.36kr.com/","type":"news","label":"创业"},
+                                {"title":"ycombinator","des":"ycombinator","url":"https://news.ycombinator.com/news","type":"news","label":"hacker"},
                                 {"title":"quora","des":"Learn English","url":"https://www.quora.com/","type":"news","label":"英语"}
                             ],
                             "title":"资讯"
