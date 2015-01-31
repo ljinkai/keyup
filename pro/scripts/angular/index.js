@@ -29,6 +29,7 @@ angular.module('app')
                         {"title":"业界资讯","des":"业界资讯","url":"http://cnbeta.feedsportal.com/c/34306/f/624776/index.rss","type":"rss","label":"杂"},
                         {"title":"36氪","des":"36氪","url":"http://www.36kr.com/feed/","type":"rss","label":"创业"},
                         {"title":"techcrunch","des":"IT新闻","url":"http://techcrunch.cn/feed/","type":"rss","label":"IT"},
+                        {"title":"品玩","des":"品味把玩","url":"http://www.pingwest.com/feed/","type":"rss","label":"品玩"},
                         {"title":"极客公园","des":"极客早知道","url":"http://www.geekpark.net/rss","type":"rss","label":"极客"},
                         {"title":"爱范儿","des":"爱范儿","url":"http://www.ifanr.com/feed","type":"rss","label":"爱范儿"},
                         {"title":"知乎周刊","des":"知乎周刊","url":"http://www.zhihu.com/rss","type":"rss","label":"知乎"},
@@ -75,7 +76,9 @@ angular.module('app')
                                 {"title":"Maka","des":"H5在线制作","url":"http://www.maka.im/home/index.html","type":"discover","label":"H5"},
                                 {"title":"微信H5","des":"关于微信的H5应用","url":"http://h5.keyup.cn","type":"discover","label":"微信"},
                                 {"title":"牛玩","des":"新鲜、试玩","url":"http://knewone.com/","type":"discover","label":"试玩"},
-                                {"title":"teahour","des":"IT播客","url":"http://teahour.fm/","type":"discover","label":"播客"}
+                                {"title":"teahour","des":"IT播客","url":"http://teahour.fm/","type":"discover","label":"播客"},
+                                {"title":"vidgif","des":"video to gif","url":"http://imgur.com/vidgif","type":"discover","label":"视频转gif"},
+                                {"title":"pingwest","des":"品玩","url":"http://www.pingwest.com/","type":"discover","label":"品味把玩"}
                             ],
                             "title":"发现"
                         },
